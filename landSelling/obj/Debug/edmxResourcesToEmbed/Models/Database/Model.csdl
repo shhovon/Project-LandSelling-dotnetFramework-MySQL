@@ -1,0 +1,209 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="landSellingModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="administration">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="uid" Type="Int32" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="phone" Type="Int32" Nullable="false" />
+    <Property Name="address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="user" Relationship="Self.FK_administration_user" FromRole="administration" ToRole="user" />
+  </EntityType>
+  <EntityType Name="buyer">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="uid" Type="Int32" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="occupation" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="netincome" Type="Int32" />
+    <NavigationProperty Name="user" Relationship="Self.FK_buyer_user" FromRole="buyer" ToRole="user" />
+  </EntityType>
+  <EntityType Name="post">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="title" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="description" Type="String" MaxLength="900" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="location" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="image" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="price" Type="Int32" Nullable="false" />
+    <Property Name="propertyType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="status" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="mark" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="area" Type="Int32" Nullable="false" />
+    <Property Name="beds" Type="Int32" Nullable="false" />
+    <Property Name="baths" Type="Int32" Nullable="false" />
+    <Property Name="garage" Type="Int32" Nullable="false" />
+    <Property Name="uid" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="user" Relationship="Self.FK_post_user" FromRole="post" ToRole="user" />
+    <NavigationProperty Name="requests" Relationship="Self.FK_request_post" FromRole="post" ToRole="request" />
+  </EntityType>
+  <EntityType Name="request">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="postid" Type="Int32" Nullable="false" />
+    <Property Name="userid" Type="Int32" Nullable="false" />
+    <Property Name="status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="mark" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="date" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="post" Relationship="Self.FK_request_post" FromRole="request" ToRole="post" />
+    <NavigationProperty Name="user" Relationship="Self.FK_request_user" FromRole="request" ToRole="user" />
+    <Property Name="bidprice" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="seller">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="uid" Type="Int32" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="phone" Type="Int32" Nullable="false" />
+    <Property Name="presentaddress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="permanentaddress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="facebooklink" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="whatsappno" Type="Int32" />
+    <Property Name="occupation" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="user" Relationship="Self.FK_seller_user" FromRole="seller" ToRole="user" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="user">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="role" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="status" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="administrations" Relationship="Self.FK_administration_user" FromRole="user" ToRole="administration" />
+    <NavigationProperty Name="buyers" Relationship="Self.FK_buyer_user" FromRole="user" ToRole="buyer" />
+    <NavigationProperty Name="posts" Relationship="Self.FK_post_user" FromRole="user" ToRole="post" />
+    <NavigationProperty Name="requests" Relationship="Self.FK_request_user" FromRole="user" ToRole="request" />
+    <NavigationProperty Name="sellers" Relationship="Self.FK_seller_user" FromRole="user" ToRole="seller" />
+  </EntityType>
+  <Association Name="FK_administration_user">
+    <End Role="user" Type="Self.user" Multiplicity="1" />
+    <End Role="administration" Type="Self.administration" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="user">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="administration">
+        <PropertyRef Name="uid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_buyer_user">
+    <End Role="user" Type="Self.user" Multiplicity="1" />
+    <End Role="buyer" Type="Self.buyer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="user">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="buyer">
+        <PropertyRef Name="uid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_post_user">
+    <End Role="user" Type="Self.user" Multiplicity="1" />
+    <End Role="post" Type="Self.post" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="user">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="post">
+        <PropertyRef Name="uid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_request_post">
+    <End Role="post" Type="Self.post" Multiplicity="1" />
+    <End Role="request" Type="Self.request" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="post">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="request">
+        <PropertyRef Name="postid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_request_user">
+    <End Role="user" Type="Self.user" Multiplicity="1" />
+    <End Role="request" Type="Self.request" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="user">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="request">
+        <PropertyRef Name="userid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_seller_user">
+    <End Role="user" Type="Self.user" Multiplicity="1" />
+    <End Role="seller" Type="Self.seller" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="user">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="seller">
+        <PropertyRef Name="uid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="landSellingEntity" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="administrations" EntityType="Self.administration" />
+    <EntitySet Name="buyers" EntityType="Self.buyer" />
+    <EntitySet Name="posts" EntityType="Self.post" />
+    <EntitySet Name="requests" EntityType="Self.request" />
+    <EntitySet Name="sellers" EntityType="Self.seller" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="users" EntityType="Self.user" />
+    <AssociationSet Name="FK_administration_user" Association="Self.FK_administration_user">
+      <End Role="user" EntitySet="users" />
+      <End Role="administration" EntitySet="administrations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_buyer_user" Association="Self.FK_buyer_user">
+      <End Role="user" EntitySet="users" />
+      <End Role="buyer" EntitySet="buyers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_post_user" Association="Self.FK_post_user">
+      <End Role="user" EntitySet="users" />
+      <End Role="post" EntitySet="posts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_request_post" Association="Self.FK_request_post">
+      <End Role="post" EntitySet="posts" />
+      <End Role="request" EntitySet="requests" />
+    </AssociationSet>
+    <AssociationSet Name="FK_request_user" Association="Self.FK_request_user">
+      <End Role="user" EntitySet="users" />
+      <End Role="request" EntitySet="requests" />
+    </AssociationSet>
+    <AssociationSet Name="FK_seller_user" Association="Self.FK_seller_user">
+      <End Role="user" EntitySet="users" />
+      <End Role="seller" EntitySet="sellers" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

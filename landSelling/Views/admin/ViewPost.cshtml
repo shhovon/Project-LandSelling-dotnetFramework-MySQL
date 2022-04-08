@@ -1,0 +1,35 @@
+﻿@model List<landSelling.Models.Database.post>
+@{
+    ViewBag.Title = "ViewPost";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<h1>Seller Posts</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Action</th>
+            <th scope="col">Title</th>
+            <th scope="col">Description</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Status</th>
+            <th scope="col">Date</th>
+            <th scope="col">Seller Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            
+                <tr @if(item.mark.Equals("unread")){<text>style = "background-color: #8CE787; "</text>}>
+                    <th scope="row"><a style="text-decoration:none;" href="/admin/PostDetails/@item.id">Details</a></th>
+                    <td>@item.title</td>
+                    <td>@item.description</td>
+                    <td>@item.price</td>
+                    <td>@item.status</td>
+                    <td>@item.date</td>
+                    <td>@item.user.username</td>
+                </tr>
+         }
+        </tbody>
+</table>
+

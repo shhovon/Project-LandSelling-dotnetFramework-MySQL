@@ -1,0 +1,24 @@
+﻿@model landSelling.Models.Entity.userAdminModel
+@{
+    ViewBag.Title = "userEdit";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+<div class="row">
+    <h2>Edit User Details</h2><hr>
+
+    <form action="/admin/userEdit" method="post">
+        <input type="hidden" name="uid" value="@Model.uid" />
+        <input type="text" name="password" value="@Model.password" class="form-control" placeholder="Password" /><br />
+        <select name="role" value="@Model.role">
+            <option value="admin">Admin</option>
+            <option value="employee">Employee</option>
+        </select><br />
+        <br /><input type="text" name="name" value="@Model.name" class="form-control" placeholder="Name" /><br />
+        <input type="email" name="email" value="@Model.email" class="form-control" placeholder="Email" /><br />
+        <input type="number" name="phone" value="@Model.phone" class="form-control" placeholder="Phone Number" /><br />
+        <input type="text" name="address" value="@Model.address" class="form-control" placeholder="Address" /><br />
+        <input type="submit" class="btn btn-primary" value="Update" />
+    </form>
+</div>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="54f5e66ce59549f6972db7270e4bc0b4" Name="Diagram1">
+        <EntityTypeShape EntityType="landSellingModel.administration" Width="1.5" PointX="3" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="landSellingModel.buyer" Width="1.5" PointX="3" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="landSellingModel.post" Width="1.5" PointX="3" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="landSellingModel.request" Width="1.5" PointX="5.25" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="landSellingModel.seller" Width="1.5" PointX="5.25" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="landSellingModel.sysdiagram" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="landSellingModel.user" Width="1.5" PointX="0.75" PointY="6.625" IsExpanded="true" />
+        <AssociationConnector Association="landSellingModel.FK_administration_user" ManuallyRouted="false" />
+        <AssociationConnector Association="landSellingModel.FK_buyer_user" ManuallyRouted="false" />
+        <AssociationConnector Association="landSellingModel.FK_post_user" ManuallyRouted="false" />
+        <AssociationConnector Association="landSellingModel.FK_request_post" ManuallyRouted="false" />
+        <AssociationConnector Association="landSellingModel.FK_request_user" ManuallyRouted="false" />
+        <AssociationConnector Association="landSellingModel.FK_seller_user" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

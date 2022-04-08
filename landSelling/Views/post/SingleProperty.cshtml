@@ -1,0 +1,165 @@
+﻿@model landSelling.Models.Database.post
+@{
+    ViewBag.Title = "SingleProperty";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<!--/ Intro Single star /-->
+<section class="intro-single">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-lg-8">
+                <div class="title-single-box">
+                    <h1 class="title-single">@Model.title</h1>
+                    <span class="color-text-a">@Model.location</span>
+                </div>
+            </div>
+            <div class="col-md-12 col-lg-4">
+                <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a href="index.html">Home</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="property-grid.html">Properties</a>
+                        </li>
+                        <li class="breadcrumb-item active" aria-current="page">
+                            304 Blaster Up
+                        </li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</section>
+<!--/ Intro Single End /-->
+<!--/ Property Single Star /-->
+<section class="property-single nav-arrow-b">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div id="property-single-carousel" class="owl-carousel owl-arrow gallery-property">
+                    <div class="carousel-item-b">
+                        <img src="~/Content/Frontend/img/slide-2.jpg" alt="">
+                    </div>
+                </div>
+                <div class="row justify-content-between">
+                    <div class="col-md-5 col-lg-4">
+                        <div class="property-price d-flex justify-content-center foo">
+                            <div class="card-header-c d-flex">
+                                <div class="card-box-ico">
+                                    <span class="ion-money">$</span>
+                                </div>
+                                <div class="card-title-c align-self-center">
+                                    <h5 class="title-c">@Model.price</h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="property-summary">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="title-box-d section-t4">
+                                        <h3 class="title-d">Quick Summary</h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="summary-list">
+                                <ul class="list">
+                                    <li class="d-flex justify-content-between">
+                                        <strong>Property ID:</strong>
+                                        <span>@Model.id</span>
+                                    </li>
+                                    <li class="d-flex justify-content-between">
+                                        <strong>Location:</strong>
+                                        <span>@Model.location</span>
+                                    </li>
+                                    <li class="d-flex justify-content-between">
+                                        <strong>Property Type:</strong>
+                                        <span>@Model.propertyType</span>
+                                    </li>
+                                    <li class="d-flex justify-content-between">
+                                        <strong>Status:</strong>
+                                        <span>@Model.status</span>
+                                    </li>
+                                    <li class="d-flex justify-content-between">
+                                        <strong>Area:</strong>
+                                        <span>
+                                            @Model.area m
+                                            <sup>2</sup>
+                                        </span>
+                                    </li>
+                                    <li class="d-flex justify-content-between">
+                                        <strong>Beds:</strong>
+                                        <span>@Model.beds</span>
+                                    </li>
+                                    <li class="d-flex justify-content-between">
+                                        <strong>Baths:</strong>
+                                        <span>@Model.baths</span>
+                                    </li>
+                                    <li class="d-flex justify-content-between">
+                                        <strong>Garage:</strong>
+                                        <span>@Model.garage</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-7 col-lg-7 section-md-t3">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="title-box-d">
+                                    <h3 class="title-d">Property Description</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="property-description">
+                            <p class="description color-text-a">
+                                @Model.description
+                            </p>
+                        </div>
+                        <div class="row section-t3">
+                            <div class="col-sm-12">
+                                <div class="title-box-d">
+                                    <form action="/post/request">
+                                        <input type="hidden" name="postid" value="@Model.id" />
+                                        <input type="number" class="form-control" placeholder="Bid Price" name="bidprice" value="@Model.price" required /><br />
+                                        @if(TempData["msg"] != null)
+                                        {
+                                            <span class="field-validation-error text-danger" data-valmsg-for="name" data-valmsg-replace="true">@TempData["msg"]</span><br />
+                                            TempData["msg"] = null;
+                                        }
+                                        <input type="submit" class="btn btn-secondary" value="Bid" />
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+    </div>
+</section>
+<!--/ Property Single End /-->

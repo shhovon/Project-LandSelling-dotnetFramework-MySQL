@@ -1,0 +1,112 @@
+﻿
+@{
+    ViewBag.Title = "Dashboard";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Dashboard</h2>
+
+@*<table class="table">
+        <thead>
+            <tr>
+
+                <th scope="col">Total Users</th>
+                <th scope="col">Total Number of Posts</th>
+                <th scope="col">Total Number of Active Users</th>
+                <th scope="col">Total Number of Blocked Users</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            <tr>
+                <td>@ViewBag.TotalUser</td>
+                <td>@ViewBag.TotalPost</td>
+                <td>@ViewBag.ActiveUser</td>
+                <td>@ViewBag.BlockedPost</td>
+            </tr>
+        </tbody>
+    </table>*@
+
+
+<main>
+    <section class="glass">
+        <div class="cards" style="margin-left:30px">
+            <div class="card">
+                <div class="card-info">
+                    <h3 style="color:red; text-align:center;">@ViewBag.TotalUser</h3>
+                    <h4>Users</h4>
+                </div>
+            </div>
+        </div>
+        <div class="cards" style="margin-left:20px">
+            <div class="card">
+                <div class="card-info">
+                    <h3 style="color: red;text-align: center;">@ViewBag.TotalPost </h3>
+                    <h4>Posts</h4>
+                </div>
+            </div>
+        </div>
+        <div class="cards" style="margin-left:20px">
+            <div class="card">
+                <div class="card-info">
+                    <h3 style="color:red; text-align:center;">@ViewBag.ActiveUser </h3>
+                    <h4>Active Users</h4>
+                </div>
+            </div>
+        </div>
+        <div class="cards" style="margin-left:20px;margin-right:20px">
+            <div class="card">
+                <div class="card-info">
+                    <h3 style="color:red; text-align:center;">@ViewBag.BlockedPost </h3>
+                    <h4>Blocked Users</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    main {
+        font-family: "Poppins", sans-serif;
+        min-height: 100vh;
+        @*background: linear-gradient(to right top, #65dfc9, #6cdbeb);*@
+        background: #DAD7D7;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .glass {
+        background: white;
+        min-height: 70vh;
+        width: 60%;
+        background: linear-gradient( to right bottom, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.3) );
+        border-radius: 2rem;
+        z-index: 2;
+        display: flex;
+    }
+
+    .card {
+        display: flex;
+        background: linear-gradient( to left top, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.5) );
+        border-radius: 1rem;
+        margin: 2rem 0rem;
+        padding: 2rem;
+        box-shadow: 6px 6px 20px rgba(122, 122, 122, 0.212);
+        justify-content: space-between;
+    }
+
+    .card-info {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+</style>

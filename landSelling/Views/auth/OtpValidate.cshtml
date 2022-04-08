@@ -1,0 +1,28 @@
+﻿@model landSelling.Models.Entity.OTP
+@{
+    ViewBag.Title = "OTP Validate";
+    //Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<section class="intro-single">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-lg-12">
+                <form action="/auth/OtpValidate" method="POST">
+                    <h2>Account Validation</h2>
+                    <p class="hint-text">Check your email and validate your account with the code.</p>
+                    <input type="text" class="form-control" name="otp" placeholder="Otp Code" value="@Model.otp" />
+                    @Html.ValidationMessageFor(model => model.otp, "", new { @class = "text-danger" })<br /><br />
+                    @if (ViewBag.msg != null)
+                    {
+                        <span class="field-validation-error text-danger" data-valmsg-for="otp" data-valmsg-replace="true">@ViewBag.msg</span><br />
+                        ViewBag.msg = null;
+                    }
+                    <input class="btn btn-success" type="submit" name="validateaccount" value="validate Account">
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

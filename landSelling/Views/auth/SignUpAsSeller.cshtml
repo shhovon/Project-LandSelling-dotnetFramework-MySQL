@@ -1,0 +1,233 @@
+﻿@model landSelling.Models.Entity.userSellerModel
+@{
+    ViewBag.Title = "SignUpAsSeller";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<section class="intro-single">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-lg-12">
+                <div class="text-center">
+                    <a class="btn btn-secondary" href="/auth/SignUpAsSeller">As Seller</a>
+                    <a class="btn btn-secondary" href="/auth/SignUpAsBuyer"> As Buyer </a><br>
+                </div>
+
+
+
+                    <div class="signup-form">
+                        <form action="/auth/SignUpAsSeller" method="POST">
+                            <h2>Register As a Seller</h2>
+                            <p class="hint-text">Create your account. It's free and only takes a minute.</p>
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col">
+                                        <input type="text" class="form-control" name="username" placeholder="Username" value="@Model.username">
+                                        @Html.ValidationMessageFor(model => model.username, "", new { @class = "text-danger" })
+                                        @if (ViewBag.errun != null)
+                                        {
+                                            <span class="field-validation-error text-danger" data-valmsg-for="name" data-valmsg-replace="true">@ViewBag.errun</span>
+                                            ViewBag.errun = null;
+                                        }
+                                    </div>
+                                    <div class="col">
+                                        <input type="text" class="form-control" name="name" placeholder="Name" value="@Model.name">
+                                        @Html.ValidationMessageFor(model => model.name, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col">
+                                        <input type="email" class="form-control" name="email" placeholder="Email" value="@Model.email">
+                                        @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
+                                    </div>
+                                    <div class="col">
+                                        <input type="number" class="form-control" name="phone" placeholder="Phone Number" value="@Model.phone">
+                                        @Html.ValidationMessageFor(model => model.phone, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col">
+                                        <input type="password" class="form-control" name="password" placeholder="Password" value="@Model.password">
+                                        @Html.ValidationMessageFor(model => model.password, "", new { @class = "text-danger" })
+                                    </div>
+                                    <div class="col">
+                                        <input type="password" class="form-control" name="password2" placeholder="Confirm Password" value="@Model.password2">
+                                        @Html.ValidationMessageFor(model => model.password2, "", new { @class = "text-danger" })
+                                        @if (ViewBag.err != null)
+                                        {
+                                            <span class="field-validation-error text-danger" data-valmsg-for="name" data-valmsg-replace="true">@ViewBag.err</span>
+                                            ViewBag.err = null;
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col">
+                                        <input type="text" class="form-control" name="presentaddress" placeholder="Present Address" value="@Model.presentaddress">
+                                        @Html.ValidationMessageFor(model => model.presentaddress, "", new { @class = "text-danger" })
+                                    </div>
+                                    <div class="col">
+                                        <input type="text" class="form-control" name="permanentaddress" placeholder="Permanent Address" value="@Model.permanentaddress">
+                                        @Html.ValidationMessageFor(model => model.permanentaddress, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col">
+                                        <input type="text" class="form-control" name="facebooklink" placeholder="Facebook Link" value="@Model.facebooklink">
+                                    </div>
+                                    <div class="col">
+                                        <input type="text" class="form-control" name="whatsappno" placeholder="WhatsApp Number" value="@Model.whatsappno">
+                                    </div>
+                                    <div class="col">
+                                        <input type="text" class="form-control" name="occupation" placeholder="Occupation" value="@Model.occupation">
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
+                            <div class="form-group">
+                                <input class="btn btn-success" type="submit" name="signup" value="Sign up">
+                            </div>
+                        </form>
+                        <div class="text-center">
+                            <span style="color:cadetblue;">
+                                Already have an account? <a style="color:cornflowerblue;text-decoration:none;" href="/auth/Login">Sign in</a>
+                            </span>
+                        </div>
+                    </div>
+
+
+
+
+                </div>
+            </div>
+    </div>
+</section>
+
+
+
+<style>
+    body {
+        color: #fff;
+        font-family: 'Roboto', sans-serif;
+    }
+
+    .form-control {
+        height: 40px;
+        box-shadow: none;
+        color: #969fa4;
+    }
+
+        .form-control:focus {
+            border-color: #5cb85c;
+        }
+
+    .form-control, .btn {
+        border-radius: 3px;
+    }
+
+    .signup-form {
+        margin: 0 auto;
+        padding: 30px 0;
+        font-size: 15px;
+    }
+
+        .signup-form h2 {
+            color: #636363;
+            margin: 0 0 15px;
+            position: relative;
+            text-align: center;
+        }
+
+            .signup-form h2:before, .signup-form h2:after {
+                content: "";
+                height: 2px;
+                width: 30%;
+                background: #d4d4d4;
+                position: absolute;
+                top: 50%;
+                z-index: 2;
+            }
+
+            .signup-form h2:before {
+                left: 0;
+            }
+
+            .signup-form h2:after {
+                right: 0;
+            }
+
+        .signup-form .hint-text {
+            color: #999;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .signup-form form {
+            color: #999;
+            border-radius: 3px;
+            margin-bottom: 15px;
+            background: #f2f3f7;
+            box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+            padding: 30px;
+        }
+
+        .signup-form .form-group {
+            margin-bottom: 20px;
+        }
+
+        .signup-form input[type="checkbox"] {
+            margin-top: 3px;
+        }
+
+        .signup-form .btn {
+            font-size: 16px;
+            font-weight: bold;
+            min-width: 140px;
+            outline: none !important;
+        }
+
+        .signup-form .row div:first-child {
+            padding-right: 10px;
+        }
+
+        .signup-form .row div:last-child {
+            padding-left: 10px;
+        }
+
+        .signup-form a {
+            color: #fff;
+            text-decoration: underline;
+        }
+
+            .signup-form a:hover {
+                text-decoration: none;
+            }
+
+        .signup-form form a {
+            color: #5cb85c;
+            text-decoration: none;
+        }
+
+            .signup-form form a:hover {
+                text-decoration: underline;
+            }
+</style>
+
+

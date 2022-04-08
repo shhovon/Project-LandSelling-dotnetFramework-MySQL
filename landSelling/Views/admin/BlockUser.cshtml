@@ -1,0 +1,47 @@
+﻿@model List<landSelling.Models.Database.user>
+@{
+    ViewBag.Title = "BlockUser";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>User List</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+
+            <th scope="col">ID</th>
+            <th scope="col">Username</th>
+            <th scope="col">Role</th>
+            <th scope="col">Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+
+            <tr>
+                <td>@item.id</td>
+                <td>@item.username</td>
+                <td>@item.role</td>
+                <td>@item.status</td>
+                <td>
+                    @if (item.status.Equals("active"))
+                    {
+                        <a class="btn btn-danger" href="/admin/BlockUserB/@item.id">Block</a>
+                        //<a class="btn btn-danger" href="/admin/DeletePost/@ViewBag.user.id">Delete</a>
+                    }
+                    else if (item.status.Equals("Blocked"))
+                    {
+                        <a class="btn btn-success" href="/admin/UnblockUser/@item.id">Unblock</a>
+                        // <a class="btn btn-danger" href="/admin/DeletePost/@ViewBag.user.id">Delete</a>
+                    }
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+

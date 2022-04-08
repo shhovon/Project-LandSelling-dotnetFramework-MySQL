@@ -1,0 +1,115 @@
+﻿@model List<landSelling.Models.Database.post>
+@{
+    ViewBag.Title = "MyPost";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="intro-single">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-lg-8">
+                <div class="title-single-box">
+                    <h1 class="title-single">My Posts</h1>
+                    <span class="color-text-a">Properties</span>
+                </div>
+            </div>
+            <div class="col-md-12 col-lg-4">
+                <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a href="#">Home</a>
+                        </li>
+                        <li class="breadcrumb-item active" aria-current="page">
+                            Properties Grid
+                        </li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="intro-singlee">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-lg-12">
+                @if (TempData["msg"] != null)
+                {
+                    <span class="field-validation-error text-danger" data-valmsg-for="name" data-valmsg-replace="true">@TempData["msg"]</span><br />
+                    TempData["msg"] = null;
+                }
+                <h1>Approved Post</h1>
+                <table class="table table-bordered" align="center">
+                    <tr>
+                        <th>Post Title</th>
+                        <th>Price</th>
+                        <th>Status</th>
+                        <th>Date</th>
+                        <th>Action</th>
+
+                    </tr>
+                    @foreach (var b in Model)
+                    {
+                        if (b.status.Equals("Approve"))
+                        {
+                            <tr>
+                                <td><a href="/seller/viewPostDetails/@b.id">@b.title</a> </td>
+                                <td>@b.price </td>
+                                <td>@b.status </td>
+                                <td>@b.date </td>
+                                <td><a class="btn btn-danger" href="/seller/DeletePost/@b.id">Delete</a></td>
+                            </tr>
+                        }
+                    }
+                </table>
+                <br />
+                <h1>Pending Post</h1>
+                <table class="table table-bordered" align="center">
+                    <tr>
+                        <th>Post Title</th>
+                        <th>Price</th>
+                        <th>Status</th>
+                        <th>Date</th>
+                        <th>Action</th>
+
+                    </tr>
+                    @foreach (var c in Model)
+                    {
+                        if (c.status.ToString().Equals("pending"))
+                        {
+                            <tr>
+                                <td>@c.title </td>
+                                <td>@c.price </td>
+                                <td>@c.status </td>
+                                <td>@c.date </td>
+                                <td><a class="btn btn-danger" href="/seller/DeletePost/@c.id">Delete</a></td>
+                            </tr>
+                        }
+                    }
+                </table>
+                <h1>Sold Property</h1>
+                <table class="table table-bordered" align="center">
+                    <tr>
+                        <th>Post Title</th>
+                        <th>Price</th>
+                        <th>Status</th>
+                        <th>Date</th>
+
+                    </tr>
+                    @foreach (var c in Model)
+                    {
+                        if (c.status.ToString().Equals("sold"))
+                        {
+                            <tr>
+                                <td>@c.title </td>
+                                <td>@c.price </td>
+                                <td>@c.status </td>
+                                <td>@c.date </td>
+                            </tr>
+                        }
+                    }
+                </table>
+            </div>
+        </div>
+    </div>
+</section>

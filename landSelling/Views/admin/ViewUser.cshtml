@@ -1,0 +1,38 @@
+﻿@model List<landSelling.Models.Entity.userAdminModel>
+@{
+    ViewBag.Title = "ViewUser";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>ViewUser</h2>
+<div class="form-control">
+    <table class="table table-bordered" align="center">
+        <tr>
+            <th>User Id</th>
+            <th>User Name</th>
+            <th>Password</th>
+            <th>Role</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Address</th>
+            <th></th>
+            <th></th>
+        </tr>
+        @foreach (var b in Model)
+        {
+            <tr>
+                <td>@b.uid </td>
+                <td>@b.username </td>
+                <td>@b.password </td>
+                <td>@b.role </td>
+                <td>@b.name </td>
+                <td>@b.email </td>
+                <td>@b.phone </td>
+                <td>@b.address </td>
+                <td><a class="btn btn-info" href="/admin/userEdit/@b.uid">Edit</a></td>
+                <td><a class="btn btn-danger" href="/admin/userDelete/@b.uid">Delete</a></td>
+            </tr>
+        }
+    </table>
+</div>

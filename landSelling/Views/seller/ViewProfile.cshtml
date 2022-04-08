@@ -1,0 +1,62 @@
+﻿
+@{
+    ViewBag.Title = "ViewProfile";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="intro-single">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-lg-8">
+                <div class="title-single-box">
+                    <h1 class="title-single">Seller Profile</h1>
+                </div>
+            </div>
+            <div class="col-md-12 col-lg-4">
+                <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a href="#">Home</a>
+                        </li>
+                        <li class="breadcrumb-item active" aria-current="page">
+                            Profile
+                        </li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 col-lg-12">
+                <form action="/seller/ViewProfile" method="POST">
+                    <input type="hidden" value="@Model.uid" />
+                    <label>Name</label>
+                    <input type="text" name="name" class="form-control" value="@Model.name"><br />
+                    <label>Password</label>
+                    <input type="text" class="form-control" name="password" value="@Model.password"><br />
+                    <label>Email</label>
+                    <input type="email" class="form-control" name="email" value="@Model.email"><br />
+                    <label>Phone</label>
+                    <input type="text" class="form-control" name="phone" value="@Model.phone"><br />
+                    <label>Present Address</label>
+                    <input type="text" class="form-control" name="presentaddress" value="@Model.presentaddress"><br />
+                    <label>Permanent Address</label>
+                    <input type="text" class="form-control" name="permanentaddress" value="@Model.permanentaddress"><br />
+                    <label>Facebook Link</label>
+                    <input type="text" class="form-control" name="facebooklink" value="@Model.facebooklink"><br />
+                    <label>What's app No.</label>
+                    <input type="number" class="form-control" name="whatsappno" value="@Model.whatsappno"><br />
+                    <label>Occupation</label>
+                    <input type="text" class="form-control" name="occupation" value="@Model.occupation"><br />
+                    <input type="submit" class="btn btn-primary" value="Update">
+                    <a href=" ">Go Back</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+

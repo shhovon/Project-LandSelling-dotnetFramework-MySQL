@@ -1,0 +1,64 @@
+﻿@model List<landSelling.Models.Database.request>
+@{
+    ViewBag.Title = "BuyerBids";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="intro-single">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-lg-8">
+                <div class="title-single-box">
+                    <h1 class="title-single">Your biding Info</h1>
+                    <span class="color-text-a">Properties</span>
+                </div>
+            </div>
+            <div class="col-md-12 col-lg-4">
+                <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a href="#">Home</a>
+                        </li>
+                        <li class="breadcrumb-item active" aria-current="page">
+                            Properties Grid
+                        </li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="intro-singlee">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-lg-12">
+                @if (TempData["msg"] != null)
+                {
+                    <span class="field-validation-error text-danger" data-valmsg-for="name" data-valmsg-replace="true">@TempData["msg"]</span><br />
+                    TempData["msg"] = null;
+                }
+                <table class="table table-bordered" align="center">
+                    <tr>
+                        <th>Post Title</th>
+                        <th>Your Biding Price</th>
+                        <th>Status</th>
+                        <th>Date</th>
+                        <th>Action</th>
+
+                    </tr>
+                    @foreach (var b in Model)
+                    {
+                        <tr>
+                            <td>@b.post.title </td>
+                            <td>@b.bidprice </td>
+                            <td>@b.status </td>
+                            <td>@b.date </td>
+                            <td><a class="btn btn-danger" href="/buyer/DeleteBid/@b.id">Delete</a></td>
+                        </tr>
+                    }
+                </table>
+            </div>
+        </div>
+    </div>
+</section>

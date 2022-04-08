@@ -1,0 +1,162 @@
+﻿@model List<landSelling.Models.Database.request>
+@{
+    ViewBag.Title = "viewPostDetails";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!--/ Intro Single star /-->
+<section class="intro-single">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-lg-8">
+                <div class="title-single-box">
+                    <h1 class="title-single">@ViewBag.post.title</h1>
+                    <span class="color-text-a">@ViewBag.post.location</span>
+                </div>
+            </div>
+            <div class="col-md-12 col-lg-4">
+                <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a href="index.html">Home</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="property-grid.html">Properties</a>
+                        </li>
+                        <li class="breadcrumb-item active" aria-current="page">
+                            304 Blaster Up
+                        </li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</section>
+<!--/ Intro Single End /-->
+<!--/ Property Single Star /-->
+<section class="property-single nav-arrow-b">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div id="property-single-carousel" class="owl-carousel owl-arrow gallery-property">
+                    <div class="carousel-item-b">
+                        <img src="~/Content/Frontend/img/slide-2.jpg" alt="">
+                    </div>
+                </div>
+                <div class="row justify-content-between">
+                    <div class="col-md-5 col-lg-4">
+                        <div class="property-price d-flex justify-content-center foo">
+                            <div class="card-header-c d-flex">
+                                <div class="card-box-ico">
+                                    <span class="ion-money">$</span>
+                                </div>
+                                <div class="card-title-c align-self-center">
+                                    <h5 class="title-c">@ViewBag.post.price</h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="property-summary">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="title-box-d section-t4">
+                                        <h3 class="title-d">Quick Summary</h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="summary-list">
+                                <ul class="list">
+                                    <li class="d-flex justify-content-between">
+                                        <strong>Property ID:</strong>
+                                        <span>@ViewBag.post.id</span>
+                                    </li>
+                                    <li class="d-flex justify-content-between">
+                                        <strong>Location:</strong>
+                                        <span>@ViewBag.post.location</span>
+                                    </li>
+                                    <li class="d-flex justify-content-between">
+                                        <strong>Property Type:</strong>
+                                        <span>@ViewBag.post.propertyType</span>
+                                    </li>
+                                    <li class="d-flex justify-content-between">
+                                        <strong>Status:</strong>
+                                        <span>@ViewBag.post.status</span>
+                                    </li>
+                                    <li class="d-flex justify-content-between">
+                                        <strong>Area:</strong>
+                                        <span>
+                                            @ViewBag.post.area m
+                                            <sup>2</sup>
+                                        </span>
+                                    </li>
+                                    <li class="d-flex justify-content-between">
+                                        <strong>Beds:</strong>
+                                        <span>@ViewBag.post.beds</span>
+                                    </li>
+                                    <li class="d-flex justify-content-between">
+                                        <strong>Baths:</strong>
+                                        <span>@ViewBag.post.baths</span>
+                                    </li>
+                                    <li class="d-flex justify-content-between">
+                                        <strong>Garage:</strong>
+                                        <span>@ViewBag.post.garage</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-7 col-lg-7 section-md-t3">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="title-box-d">
+                                    <h3 class="title-d">Property Description</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="property-description">
+                            <p class="description color-text-a">
+                                @ViewBag.post.description
+                            </p>
+                        </div>
+                        <div class="row section-t3">
+                            <div class="col-sm-12">
+                                <div class="title-box-d">
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <h1>Bid details for this post</h1>
+            <table class="table table-bordered" align="center">
+                <tr>
+                    <th>User Name</th>
+                    <th>Price</th>
+                    <th>Status</th>
+                    <th>Date</th>
+                    <th>Action</th>
+
+                </tr>
+                @foreach (var b in Model)
+                {
+                    
+            <tr>
+                <td>@b.user.username</td>
+                <td>@b.bidprice </td>
+                <td>@b.status </td>
+                <td>@b.date </td>
+                @if(b.status != "sold")
+                {
+                    <td><a class="btn btn-secondary" href="/seller/AcceptBid/@b.id">Accept</a></td>
+                }
+                
+            </tr>
+                    
+                }
+            </table>
+        </div>
+    </div>
+</section>
+<!--/ Property Single End /-->

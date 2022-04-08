@@ -1,0 +1,89 @@
+﻿@model IEnumerable<landSelling.Models.Database.seller>
+@{
+    ViewBag.Title = "PostDetails";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+<h2>Posted By</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Username</th>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Phone</th>
+            <th scope="col">P. Address</th>
+            <th scope="col">Per. Address</th>
+            <th scope="col">FB link</th>
+            <th scope="col">Whats'app</th>
+            <th scope="col">Occupation</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.user.username</td>
+                <td>@item.name</td>
+                <td>@item.email</td>
+                <td>@item.phone</td>
+                <td>@item.presentaddress</td>
+                <td>@item.permanentaddress</td>
+                <td>@item.facebooklink</td>
+                <td>@item.whatsappno</td>
+                <td>@item.occupation</td>
+            </tr>
+        }
+    </tbody>
+</table>
+<br />
+<br />
+<br />
+<br />
+<h2 style="margin-top:40px;">Post Details for @ViewBag.post.title</h2>
+
+
+<table class="table">
+    <thead>
+        <tr>
+
+            <th scope="col">Title</th>
+            <th scope="col">Description</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Status</th>
+            <th scope="col">Date</th>
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+
+            <tr>
+                <td>@ViewBag.post.title</td>
+                <td>@ViewBag.post.description</td>
+                <td>@ViewBag.post.price</td>
+                <td>@ViewBag.post.status</td>
+                <td>@ViewBag.post.date</td>
+                <td>
+                    @if (ViewBag.post.status.Equals("pending"))
+                    {
+                        <a class="btn btn-success" href="/admin/AcceptPost/@ViewBag.post.id">Accept</a>
+                        <a class="btn btn-danger" href="/admin/DeletePost/@ViewBag.post.id">Delete</a>
+                    }
+                    else
+                    {
+                        <a class="btn btn-primary" href="/admin/MakePending/@ViewBag.post.id">Make Pending</a>
+                        <a class="btn btn-danger" href="/admin/DeletePost/@ViewBag.post.id">Delete</a>
+                    }
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+

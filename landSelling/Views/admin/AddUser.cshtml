@@ -1,0 +1,23 @@
+﻿@model landSelling.Models.Database.administration
+@{
+    ViewBag.Title = "AddUser";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="row">
+    <h2>AddUser</h2>
+
+    <form action="/admin/AddUser" method="post">
+        <input type="text" name="username" class="form-control" placeholder="User Name" /><br />
+        <input type="password" name="password" class="form-control" placeholder="Password" /><br />
+        <select name="role">
+            <option value="admin">Admin</option>
+            <option value="employee">Employee</option>
+        </select><br />
+        <br /><input type="text" name="name" class="form-control" placeholder="Name" /><br />
+        <input type="email" name="email" class="form-control" placeholder="Email" /><br />
+        <input type="number" name="phone" class="form-control" placeholder="Phone Number" /><br />
+        <input type="text" name="address" class="form-control" placeholder="Address" /><br />
+        <input type="submit" class="btn btn-success" value="Add User" />
+    </form>
+</div>
